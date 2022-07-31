@@ -411,17 +411,107 @@
     <a href="#" class="float-right mb-3 mr-3">Back to top</a>
     <script>
       /* JS Exercises should go here */
-      // Write a JavaScript functionality to add a new link into the navbar
-      // Write a JavaScript functionality to change the color of the main heading title
-      // Write a JavaScript functionality to change the background of the jumbotron
 
+      // Write a JavaScript functionality to add a new link into the navbar
+
+      const addLinkToNavBar = function (text) {
+        const navBar = document.querySelector(".nav");
+        const newLink = document.createElement("span");
+        newLink.innerText = text;
+        navBar.appendChild(newLink);
+      };
+
+      addLinkToNavBar("New Link");
+
+      // Write a JavaScript functionality to change the color of the main heading title
+
+      const changeTitle = function () {
+        const newTitle = document.getElementsByTagName("h1")[0];
+        newTitle.addEventListener("click", (event) => {
+          event.target.style.textTransform = "lowercase";
+        });
+      };
+
+      changeTitle();
+
+      // Write a JavaScript functionality to change the background of the jumbotron
+      const changeJumbotron = function () {
+        const newJumbotron = document.getElementsByClassName("jumbotron")[0];
+        newJumbotron.addEventListener("click", (event) => {
+          event.target.style.backgroundColor = "yellow";
+        });
+      };
+
+      changeJumbotron();
       // Write a JavaScript functionality to remove the “twitter” link under the “Elsewhere” section in the aside element. It should happen when the page loads, automatically
 
+      const removeLink = function () {
+        const twitter = document
+          .querySelector("aside div:last-child li:nth-of-type(2)")
+          .remove();
+      };
+
+      removeLink();
+
       // Write a JavaScript functionality to remove the first 50 characters in the first paragraph for every blog post
+
+      const removeChar = function () {
+        const paragraph = document.querySelectorAll(
+          ".blog-post p:nth-child(3)"
+        );
+        for (let i = 0; i < paragraph.length; i++) {
+          paragraph[i].innerText = paragraph[i].innerText.slice(50);
+        }
+      };
+
+      removeChar();
+
       // Write a JavaScript functionality to add a new Blog Post (div with title and text)
+
+      const newPost = function (title, blog) {
+        const blogPost = document.querySelector(".blog-main");
+        const navbtn = document.querySelector(".blog-pagination");
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("blog-post");
+        const newH2 = document.createElement("h2");
+        newH2.classList.add("blog-post-title");
+        newH2.innerText = title;
+        newDiv.appendChild(newH2);
+        const newBlogPost = document.createElement("p");
+        newBlogPost.innerText = blog;
+        newDiv.appendChild(newBlogPost);
+        blogPost.insertBefore(newDiv, navbtn);
+      };
+
+      newPost("New Title", "New Blog Post");
+
       // Write a JavaScript functionality to remove the last Blog Post when the user clicks on the "Older" button
 
+      const olderBtn = function () {
+        const olderBtnClick = document.querySelector(
+          ".blog-pagination a:first-of-type"
+        );
+        const lastBlogPost = document.querySelector(".blog-post:last-of-type");
+        olderBtnClick.addEventListener("click", (event) => {
+          lastBlogPost.remove();
+        });
+      };
+
+      olderBtn();
+
       // Write a JavaScript functionality that will create an alert with the name of the author every time the user hovers the mouse on an author's name
+
+      const showAuthorAlert = function () {
+        for (let authorTextAlert of document.querySelectorAll(
+          ".blog-post-meta a"
+        ))
+          authorTextAlert.onmouseover = function (event) {
+            alert(event.target.innerText);
+          };
+      };
+
+      showAuthorAlert();
+
       // EXTRA Write a JavaScript functionality that will remove the corresponding parent card from the DOM, upon clicking on their “Continue reading” link
     </script>
   </body>
